@@ -29,21 +29,29 @@ posts = Post.all
   )
 end
 
+puts "#{Post.count}"
+Post.find_or_create_by(title: "A unique title", body: "A unique body")
+puts "#{Post.count}"
+
+puts "#{Comment.count}"
+Comment.find_or_create_by(body: "What a unique body")
+puts "#{Comment.count}"
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 
-def unique
-  if post != post.find_or_create_by(title: 'the_one') && post != post.find_or_create_by(body: 'the_body')
-  Post.create! (
-    title: 'the_one'
-    body: 'the_body'
-  )
-end
-
-def unique_comment
-  if post != post.find_or_create_by(body: 'unique_body')
-  Comment.create! (
-    body: 'what_a_bod'
-  )
-end
+# def unique
+#   if post != post.find_or_create_by(title: 'the_one') && post != post.find_or_create_by(body: 'the_body')
+#   Post.create! (
+#     title: 'the_one'
+#     body: 'the_body'
+#   )
+# end
+#
+# def unique_comment
+#   if post != post.find_or_create_by(body: 'unique_body')
+#   Comment.create! (
+#     body: 'what_a_bod'
+#   )
+# end
