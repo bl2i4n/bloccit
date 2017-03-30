@@ -32,3 +32,18 @@ end
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+
+def unique
+  if post != post.find_or_create_by(title: 'the_one') && post != post.find_or_create_by(body: 'the_body')
+  Post.create! (
+    title: 'the_one'
+    body: 'the_body'
+  )
+end
+
+def unique_comment
+  if post != post.find_or_create_by(body: 'unique_body')
+  Comment.create! (
+    body: 'what_a_bod'
+  )
+end
