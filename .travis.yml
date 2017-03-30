@@ -1,0 +1,8 @@
+{
+  "language": "ruby",
+  "sudo": false,
+  "rvm": "1.29.1",
+  "cache": {
+    "bundler": true
+  },
+}
