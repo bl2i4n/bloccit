@@ -36,7 +36,7 @@ RSpec.describe PostsController, type: :controller do
   #3
   it "instantiates @post" do
     get :new
-    expect(assignts(:post)).not_to be_nil
+    expect(assigns(:post)).not_to be_nil
   end
 end
 
@@ -58,4 +58,5 @@ end
       expect(response).to redirect_to Post.last
     end
 
+end
 end
