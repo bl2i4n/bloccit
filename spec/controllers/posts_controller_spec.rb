@@ -58,5 +58,26 @@ end
       expect(response).to redirect_to Post.last
     end
 
-end
+  end
+
+  describe "GET show" do
+    it "returns http success" do
+      #16
+      get :show, {id: my_post.id}
+      expect(response).to have_http_status(:success)
+    end
+    it "renders the #show view" do
+      #17
+      get :show, {id: my_post.id}
+      expect(response). to render_template :show
+    end
+
+    it "assigns my_post to @post" do
+      get :show, {id: my_post.id}
+      #18
+      expect(assigns(:post)).to eq(my_post)
+    end
+    
+  end
+
 end
