@@ -1,2 +1,21 @@
-<h1>Advertisement#new</h1>
-<p>Find me in app/views/advertisement/new.html.erb</p>
+<h1>New Ad</h1>
+
+<div class="row">
+  <%= form_for @advertisement, url: 'advertisement/new' do |f| %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control', placeholder: "Enter post tile" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :body %>
+      <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
+    </div>
+    <div class ="form-group">
+      <%= f.label :price %>
+      <%= f.number_field :price, class: 'form-control', placeholder: 99 %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Save", class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>

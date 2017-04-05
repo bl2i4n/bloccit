@@ -3,12 +3,19 @@ require 'rails_helper'
 RSpec.describe Advertisement, type: :model do
 
   #refactor to have title body and price
-  let(:post) { Post.create!(title:"New Post Title", body:"New Post Body") }
+  let(:advertisement) { Advertisement.create!}
 
   describe "attributes" do
-    it "has title and body attributes" do
-      expect(post).to have_attributes(title: "New Post Title", body: "New Post Body")
+    it "should respond to title" do
+      expect(advertisement).to respond_to(:title)
+    end
+
+    it "should respond to body" do
+      expect(advertisement).to respond_to(:body)
+    end
+
+    it "should respond to price" do
+      expect(advertisement).to respond_to(:price)
     end
   end
-
 end

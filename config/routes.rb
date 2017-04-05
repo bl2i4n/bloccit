@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  #resource routing instead of multiple routes
   resources :advertisement
-
   #1
   resources :posts
 

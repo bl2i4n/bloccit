@@ -1,2 +1,10 @@
-<h1>Advertisement#index</h1>
-<p>Find me in app/views/advertisement/index.html.erb</p>
+<h1>All Ads</h1>
+<% @advertisement.each do |ad| %>
+  <div class ="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= link_to "$#{ad.price}: #{ad.title}", ad %>
+      </h4>
+    </div>
+  </div>
+<% end %>
