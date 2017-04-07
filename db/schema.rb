@@ -21,15 +21,6 @@ ActiveRecord::Schema.define(version: 20170404003021) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "answers", force: :cascade do |t|
-    t.integer  "question_id"
-    t.text     "body"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
-
   create_table "comments", force: :cascade do |t|
     t.text     "body"
     t.integer  "post_id"
@@ -42,14 +33,6 @@ ActiveRecord::Schema.define(version: 20170404003021) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.string   "resolved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

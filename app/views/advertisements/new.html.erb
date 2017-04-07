@@ -1,7 +1,7 @@
 <h1>New Ad</h1>
 
 <div class="row">
-  <%= form_for @advertisement, url: 'advertisement/new' do |f| %>
+  <%= form_for @advertisement do |f| %>
     <div class="form-group">
       <%= f.label :title %>
       <%= f.text_field :title, class: 'form-control', placeholder: "Enter post tile" %>

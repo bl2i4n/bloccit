@@ -16,9 +16,9 @@ RSpec.describe AdvertisementController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it "assigns [my_ad] to @advertisement" do
+    it "assigns [my_ad] to @advertisements" do
       get :index
-      expect(assigns(:advertisement)).to eq([my_ad])
+      expect(assigns(:advertisements)).to eq([my_ad])
     end
   end
 
