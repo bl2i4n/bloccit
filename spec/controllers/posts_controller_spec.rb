@@ -2,78 +2,69 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
 
-  #8
-  let(:my_post) {Post.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph)}
+  #12
+  let(:my_topic){ Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph)}
+  #13
+  let(:my_post){ my_topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph)}
 
-  #6
-  describe "GET #index" do
-    it "returns http success" do
-  #7
-      get :index
-      expect(response).to have_http_status(:success)
-    end
-
-    it "assigns [my_post] to @posts" do
-        get :index
-      #9
-        expect(assigns(:posts)).to eq([my_post])
-    end
-  end
-
-  #1
   describe "GET new" do
   it "returns http success" do
-    get :new
+    #18
+    get :new, topic_id: my_topic.id
     expect(response).to have_http_status(:success)
   end
 
-  #2
   it "renders the #new view" do
-    get :new
+    #19
+    get :new, topic_id: my_topic.id
     expect(response).to render_template :new
   end
 
-  #3
   it "instantiates @post" do
-    get :new
+    #20
+    get :new, topic_id: my_topic.id
     expect(assigns(:post)).not_to be_nil
   end
 end
 
   describe "POST create" do
-    #4
+
     it "increases the number of Post by 1" do
-      expect{post :create, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}}.to change(Post,:count).by(1)
+      #21
+      expect{post :create, topic_id: my_topic.id, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}}.to change(Post,:count).by(1)
     end
 
-    #5
+
     it "assigns the new post to @post" do
-      post :create, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
+      #22
+      post :create, topic_id: my_topic.id, post: {title: Random.random_sentence, body: RandomData.random_paragraph}
       expect(assigns(:post)).to eq Post.last
     end
 
-    #6
+
     it "redirects to the new post" do
-      post :create, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
-      expect(response).to redirect_to Post.last
+      #23
+      post :create, topic_id: my_topic.id, post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
+      #24
+      expect(response).to redirect_to [my_topic, Post.last]
     end
   end
 
   describe "GET show" do
     it "returns http success" do
-      #16
-      get :show, {id: my_post.id}
+      #15
+      get :show, topic_id: my_topic.id, id: my_post.id
       expect(response).to have_http_status(:success)
     end
     it "renders the #show view" do
-      #17
-      get :show, {id: my_post.id}
+      #16
+      get :show, topic_id: my_topic.id, id: my_post.id
       expect(response). to render_template :show
     end
 
     it "assigns my_post to @post" do
-      get :show, {id: my_post.id}
-      #18
+      #17
+      get :show, topic_id: my_topic.id, id: my_post.id
       expect(assigns(:post)).to eq(my_post)
     end
   end

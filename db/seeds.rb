@@ -7,11 +7,22 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'random_data'
 
+#create topics
+15.times do
+  Topic.create!(
+    name: RandomData.random_sentence,
+    description: RandomData.random_paragraph
+  )
+end
+topics = Topic.all
+
+
+
 #create posts
 50.times do
   #1
   Post.create!(
-    #2
+    topic: topics.sample,
     title: RandomData.random_sentence,
     body: RandomData.random_paragraph
 
@@ -38,6 +49,7 @@ Comment.find_or_create_by(body: "What a unique body")
 puts "#{Comment.count}"
 
 puts "Seed finished"
+puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 
