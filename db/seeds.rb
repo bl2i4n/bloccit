@@ -29,6 +29,8 @@ posts = Post.all
   )
 end
 
+#Assignment 17, by using the find_or_create_by method
+#we can ensure that a unique post and comment/body is being created
 puts "#{Post.count}"
 Post.find_or_create_by(title: "A unique title", body: "A unique body")
 puts "#{Post.count}"
