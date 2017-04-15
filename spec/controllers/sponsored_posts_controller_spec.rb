@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe SponsoredPostsController, type: :controller do
 
+  let(:my_topic){}
+
+
+
   describe "GET #show" do
     it "returns http success" do
       get :show
