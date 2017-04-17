@@ -1,0 +1,13 @@
+<h1>All Posts</h1>
+<!-- #12 -->
+<% @posts.each do |post| %>
+  <!-- link_to method will detec the object and parse id automagically -->
+  <!-- convention over configuration -->
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= link_to post.title, post %>
+      </h4>
+    </div>
+  </div>
+<% end %>
