@@ -9,6 +9,8 @@ class PostsController < ApplicationController
   #   end
   # end
 
+  before_action :require_sign_in, except: :show
+
   def show
     #19
     @post = Post.find(params[:id])
@@ -27,6 +29,7 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     #35
     @post.topic = @topic
+    @post.user = current_user
 
     #10
     if @post.save
