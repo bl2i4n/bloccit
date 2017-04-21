@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+#4
 include SessionsHelper
 
 RSpec.describe PostsController, type: :controller do
@@ -73,7 +73,6 @@ RSpec.describe PostsController, type: :controller do
      before do
        create_session(my_user)
      end
-   end
 
   describe "GET new" do
   it "returns http success" do

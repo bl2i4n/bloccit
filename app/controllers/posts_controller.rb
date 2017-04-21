@@ -22,13 +22,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    #9
-    @post = Post.new
-    @post.title = params[:post][:title]
-    @post.body = params[:post][:body]
     @topic = Topic.find(params[:topic_id])
-    #35
-    @post.topic = @topic
+    @post = @topic.posts.build(post_params)
     @post.user = current_user
 
     #10
@@ -50,8 +45,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.title = params[:post][:title]
-    @post.body = params[:post][:body]
+    @post.assign_attributes(post_params)
 
     if @post.save
       flash[:notice] = "Post was updated."
@@ -74,5 +68,11 @@ class PostsController < ApplicationController
       flash.now[:alert] = "There was an error deleting the post."
       render :show
     end
+  end
+  #add private methods at the bottom of the file, anything below is private
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :body)
   end
 end

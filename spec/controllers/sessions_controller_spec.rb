@@ -27,7 +27,7 @@ RSpec.describe SessionsController, type: :controller do
     end
 
     it "flashes #error with bad email address" do
-      post :Create, session: {email: "does not exist"}
+      post :create, session: {email: "does not exist"}
       expect(flash.now[:alert]).to be_present
     end
 
