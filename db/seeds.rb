@@ -65,6 +65,12 @@ member = User.create!(
   email: 'member@example.com',
   password: 'helloworld'
 )
+#create a moderator
+moderator = User.create!(
+  name: 'Moderator User',
+  email: 'moderator@example.com',
+  password: 'helloworld'
+)
 
 puts "#{Post.count}"
 Post.find_or_create_by(title: "A unique title", body: "A unique body")

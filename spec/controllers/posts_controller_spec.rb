@@ -5,6 +5,7 @@ include SessionsHelper
 RSpec.describe PostsController, type: :controller do
   let(:my_user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
   let(:other_user) { User.create!(name: RandomData.random_name, email: RandomData.random_email, password: "helloworld", role: :member) }
+  let(:mod_user) { User.create!(name: RandomData.random_name, email: RandomData.random_email, password: "helloworld", role: :moderator) }
   let (:my_topic) { Topic.create!(name:  RandomData.random_sentence, description: RandomData.random_paragraph) }
   let(:my_post) { my_topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: my_user) }
 
@@ -368,6 +369,21 @@ RSpec.describe PostsController, type: :controller do
         delete :destroy, topic_id: my_topic.id, id: my_post.id
         expect(response).to redirect_to my_topic
       end
+    end
+  end
+
+  context "moderator" do
+    describe "GET show" do
+      it "returns http success" do
+        get :show, topic_id: my_topic.id, id: my_post.id
+        expect(response).to have_http_status(:success)
+      end
+
+      it "renders the #show view" do
+        get :show, topic_id: my_topic.id, id: my_post.id
+        expect(response).to render_template :show
+      end
+
     end
   end
 end
