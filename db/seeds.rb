@@ -16,7 +16,15 @@ require 'random_data'
 end
 topics = Topic.all
 
-
+# Create Sponsored posts
+50.times do
+  SponsoredPost.create!(
+  title: RandomData.random_sentence,
+  body: RandomData.random_paragraph,
+  price: 199,
+  topic: topics.sample
+  )
+end
 
 #create posts
 50.times do
@@ -52,6 +60,7 @@ puts "Seed finished"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{SponsoredPost.count} sponsored posts created"
 
 # def unique
 #   if post != post.find_or_create_by(title: 'the_one') && post != post.find_or_create_by(body: 'the_body')
