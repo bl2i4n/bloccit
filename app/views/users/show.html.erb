@@ -22,7 +22,10 @@
 
 <!-- 14 -->
 <h2>Posts</h2>
-<%= render @user.posts %>
+  <%= count_posts(@user) %>
 
 <h2>Comments</h2>
-<%= render @user.comments %>
+  <% count_comments(@users) %>
+
+<h2>Favorite Posts</h2>
+  <%= show_favs(@user) %>
