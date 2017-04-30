@@ -32,7 +32,7 @@ RSpec.describe Comment, type: :model do
     #23
     it "sends an email to users who have favorited the post" do
       favorite = user.favorites.create(post: post)
-      expect(FavoriteMailer).to receive(:new_comment).with(user, post, @another_comment).and_return(dobule(deliver_now: true))
+      expect(FavoriteMailer).to receive(:new_comment).with(user, post, @another_comment).and_return(double(deliver_now: true))
       @another_comment.save!
     end
 

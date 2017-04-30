@@ -84,7 +84,7 @@ RSpec.describe UsersController, type: :controller do
 
     it "renders the #show view" do
       get :show, {id: factory_user.id}
-      expect(resposne).to render_template :show
+      expect(response).to render_template :show
     end
 
     it "assigns factory_user to @user" do
