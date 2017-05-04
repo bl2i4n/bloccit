@@ -10,7 +10,7 @@
     <p class="lead"><%= @topic.description %></p>
     <!-- 10 -->
     <% @topic.posts.each do |post| %>
-      <%= render partial: 'votes/voter', locals: {post: post} %>
+      <!-- <%= render partial: 'votes/voter', locals: {post: post} %> -->
       <%= render partial: 'posts/post', locals: {post: post} %>
     <% end %>
   </div>
