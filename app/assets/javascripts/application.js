@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+  console.log("loaded");
+});
